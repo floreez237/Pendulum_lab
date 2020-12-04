@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="991.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Description">
+   <children>
+      <Group>
+         <children>
+            <Label contentDisplay="CENTER" layoutX="267.0" prefHeight="81.0" prefWidth="401.0" text="PENDULUM LAB" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Cambria Math" size="55.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.7524271844660194" endY="0.4854368932038835" startX="0.1553398058252427" startY="0.2669902912621359">
+                     <stops>
+                        <Stop color="#2a4f7a" />
+                        <Stop color="#2a4f7a" offset="0.007246376811594203" />
+                        <Stop color="#bf3f3f" offset="0.5326086956521742" />
+                        <Stop color="#2a507c" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <ImageView fitHeight="453.0" fitWidth="489.0" layoutX="439.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/AnyConv.com__690bab6f75fa6db4b43adfd3971695511a606b88-removebg-preview%20(2).png" />
+               </image>
+            </ImageView>
+            <Label layoutX="7.0" layoutY="121.0" prefHeight="81.0" prefWidth="127.0" text="Objectives:" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Cambria" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="584.0" prefHeight="69.0" prefWidth="127.0" text="Procedure:" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Cambria" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="380.0" prefHeight="81.0" prefWidth="158.0" text="Requirements:" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Cambria" size="25.0" />
+               </font>
+            </Label>
+            <JFXTextArea editable="false" layoutX="7.0" layoutY="188.0" prefHeight="192.0" prefWidth="559.0" text="The aim of this experiment is:&#10;&#10;1. To determine the value of g  using a Simple Pendulum.&#10;&#10;2. To understand the relationship between the period and the length of a Simple Pendulum.&#10;" wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextArea>
+            <JFXTextArea editable="false" layoutX="7.0" layoutY="452.0" prefHeight="126.0" prefWidth="559.0" text="•&#9;Pendulum Bob.&#10;•&#9;Stopwatch.&#10;•&#9;Protractor.&#10;•&#9;1.00-m String." wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextArea>
+            <JFXTextArea editable="false" layoutY="653.0" prefHeight="203.0" prefWidth="935.0" text="1. Record the length of the pendulum.&#10;&#10;2. Set the pendulum in motion until it completes 10 to and fro oscillations, taking care to record this time. Then the period T for one oscillation is just the number recorded divided by 10 using (eq. 2).&#10;&#10;3. You will make a total of eight measurements for t, and record it in the table.&#10;&#10;The period T of a simple pendulum (measured in seconds) is given by the formula:&#10;                                                                       T=2π√(l/g)      … (1)&#10;&#10;                                                                       Period; T =  t/10&#10;&#10;Rearranging (1) to solve for “g”, knowing that l is the length of the pendulum (measured in meters) and g is the acceleration due to gravity (measured in ms-2), g yields:&#10;                                                                       g =  4π²L/T^2 &#10;&#10;4. Plot a graph of T2 vs l and the slope is obtained." wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextArea>
+            <JFXButton fx:id="startButton" layoutX="373.0" layoutY="886.0" onAction="#launchLab" prefHeight="33.0" prefWidth="132.0" style="-fx-background-radius: 50;" stylesheets="@../style/Button.css" text="GET STARTED" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/ok.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="background" />
+                  <String fx:value="button2" />
+               </styleClass>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Group>
+   </children>
+</StackPane>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PendulumController">
+   <children>
+      <Circle fx:id="axleCircle" centerX="450.0" centerY="30.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Group layoutX="707.0" layoutY="549.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="157.0" />
+            <TextField fx:id="tfTimer" alignment="CENTER" editable="false" layoutX="20.0" layoutY="22.0" prefHeight="30.0" prefWidth="110.0" text="0.000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="btnStartStop" buttonType="RAISED" layoutX="87.0" layoutY="72.0" onMouseClicked="#handleStartStopStopWatch" style="-fx-background-color: white;" text="Start">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnRestart" buttonType="RAISED" layoutX="20.0" layoutY="72.0" onMouseClicked="#handleRestartStopWatch" style="-fx-background-color: white;" text="Restart">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Group>
+      <Line fx:id="ropeLine" endX="200.0" endY="300.0" startX="10.0" startY="20.0" />
+      <Circle fx:id="bobCircle" centerX="450.0" centerY="460.0" fill="DODGERBLUE" onMouseDragged="#changeBallPosition" onMouseReleased="#handleBallRelease" radius="17.0" stroke="BLACK" strokeType="INSIDE" />
+      <JFXButton contentDisplay="CENTER" layoutX="418.0" layoutY="608.0" onMouseClicked="#reInitialize" prefHeight="30.0" prefWidth="41.0" text="Restart">
+         <graphic>
+            <Circle fill="DODGERBLUE" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblAngleMax" contentDisplay="CENTER" layoutX="469.0" layoutY="55.0" text="0.0°" textFill="#2931ab">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="optionsAnchorPane" layoutX="890.0" prefHeight="700.0" prefWidth="252.0" style="-fx-background-color: lightgrey;">
+         <children>
+            <Label layoutX="23.0" layoutY="40.0" text="Rope  Length: ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Slider fx:id="ropeLengthSlider" blockIncrement="0.1" layoutX="13.0" layoutY="67.0" majorTickUnit="0.15" max="1.5" min="0.75" minorTickCount="0" prefHeight="14.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+            <Label fx:id="lblRopeLength" layoutX="125.0" layoutY="40.0" text="1.5 m">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="143.0" text="Mass: ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Slider fx:id="massSlider" layoutX="13.0" layoutY="170.0" majorTickUnit="50.0" max="300.0" min="50.0" minorTickCount="0" prefHeight="14.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" value="100.0" />
+            <Label fx:id="lblMass" layoutX="69.0" layoutY="143.0" text="100g">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="recKE" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="46.0" y="395.0" />
+            <Line fx:id="horizontalAxisLine" endX="225.0" endY="646.0" startX="25.0" startY="646.0" />
+            <Rectangle fx:id="recPE" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="110.0" y="395.0" />
+            <Line fx:id="verticalAxisLine" endX="24.5" endY="645.5" startX="24.5" startY="366.0" />
+            <Rectangle fx:id="recTE1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="527.0" />
+            <Line endX="-109.0" endY="21.0" layoutX="144.0" layoutY="355.0" startX="-119.0" startY="10.5" />
+            <Line endX="-103.0" endY="-11.5" layoutX="127.0" layoutY="377.0" startX="-112.0" />
+            <Label layoutX="51.0" layoutY="658.0" rotate="-90.0" text="K.E">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="115.0" layoutY="658.0" rotate="-90.0" text="P.E">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="180.0" layoutY="658.0" rotate="-90.0" text="T.E">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="recTE2" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="132.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="395.0" />
+            <ComboBox fx:id="cmbGraph" layoutX="20.0" layoutY="260.0" onAction="#changeGraph" prefHeight="25.0" prefWidth="165.0" />
+            <Label layoutX="19.0" layoutY="235.0" text="Graph">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

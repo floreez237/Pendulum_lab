@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="673.0" prefWidth="1095.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="907.0">
+         <children>
+            <Pane fx:id="simplePendulumPane" layoutX="90.0" layoutY="168.0" onMouseClicked="#launchLab" onMouseEntered="#zoomIn" onMouseExited="#zoomOut" prefHeight="290.0" prefWidth="325.0">
+               <children>
+                  <ImageView fx:id="image" fitHeight="352.0" fitWidth="362.0" layoutX="-38.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/photo_2020-10-30_10-21-50.jpg" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="388.0" layoutX="-68.0" layoutY="-30.0" stroke="#eea512" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="423.0" />
+                  <Label fx:id="lbPendulum" layoutX="31.0" layoutY="305.0" text="Simple Pendulum" textFill="WHITE">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Label layoutX="90.0" layoutY="-26.0" text="Interactive Simulations" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="68.0" />
+               </font>
+            </Label>
+            <Pane fx:id="inclinedPlanePane" layoutX="514.0" layoutY="146.0" onMouseClicked="#displayAlert" onMouseEntered="#zoomIn" onMouseExited="#zoomOut" prefHeight="290.0" prefWidth="325.0">
+               <children>
+                  <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="387.0" layoutX="-56.0" layoutY="-8.0" stroke="#ed9b13" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="443.0" />
+                  <ImageView fx:id="image1" fitHeight="227.0" fitWidth="290.0" layoutX="6.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/inclined.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbInclinedPlane" layoutX="62.0" layoutY="326.0" text="Inclined Plane" textFill="WHITE">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
