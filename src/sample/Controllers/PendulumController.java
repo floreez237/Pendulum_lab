@@ -169,14 +169,14 @@ public class PendulumController {
         double ke = newKineticEnergy();
         double pe = newPotentialEnergy();
         double theta = newTheta();
-        if (Math.abs(ke) < 1e-14) {
+        if (Math.abs(ke) < 1e-6) {
             keCurve.getPoints().clear();
         }
-        if (Math.abs(totalEnergy - pe) < 1e-14) {
+        if (Math.abs(totalEnergy - pe) < 1e-6) {
             peCurve.getPoints().clear();
         }
 
-        double x = (((theta + thetaMax) / (2 * thetaMax)) * MAX_WIDTH) + horizontalAxisLine.getStartX(); //this is a formula I derived for the x-coordinate
+        double x = (((theta + Math.abs(thetaMax)) / (2 * Math.abs(thetaMax)) * MAX_WIDTH) + horizontalAxisLine.getStartX()); //this is a formula I derived for the x-coordinate
         double keY = verticalAxisLine.getStartY() - (ke / totalEnergy) * MAX_HEIGHT;
         double peY = verticalAxisLine.getStartY() - (pe / totalEnergy) * MAX_HEIGHT;
 
@@ -306,6 +306,7 @@ public class PendulumController {
         massSlider.valueProperty().addListener(o1 -> {
             mass = massSlider.getValue();
             lblMass.setText((int) mass + "g");
+            mass /= 1000;
             bobCircle.setRadius((massSlider.getValue() * 17) / 100);
         });
 
