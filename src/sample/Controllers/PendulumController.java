@@ -26,7 +26,7 @@ public class PendulumController {
     private static final double MINOR_DIVISION_LENGTH = 10;
     private static final double GRAVITY = 9.8;
     private static final double RECTANGLE_HEIGHT = 250;
-    private static final double MIN_RECTANGLE_Y = 395;
+    private static final double MIN_RECTANGLE_Y = 309;
 
 
     private double lengthOfRope = 1.0;
@@ -52,6 +52,14 @@ public class PendulumController {
     @FXML
     private ComboBox<String> cmbGraph;
 
+    @FXML
+    private Label lblKe;
+
+    @FXML
+    private Label lblPe;
+
+    @FXML
+    private Label lblTe;
 
     @FXML
     private Line horizontalAxisLine;
@@ -119,8 +127,15 @@ public class PendulumController {
         double deltaY = lengthOfRopeInPixels * Math.cos(theta);
         bobCircle.setCenterX(axleCircle.getCenterX() + deltaX);
         bobCircle.setCenterY(axleCircle.getCenterY() + deltaY);
-//        barEnergyGraph();
-        energyCurve();
+
+        lblKe.setText(String.format("%.2e J",newKineticEnergy()));
+        lblPe.setText(String.format("%.2e J",newPotentialEnergy()));
+        lblTe.setText(String.format("%.2e J", getTotalEnergy()));
+        if (cmbGraph.getSelectionModel().getSelectedIndex() == 0) {
+            barEnergyGraph();
+        } else {
+            energyCurve();
+        }
     }));
 
 
@@ -134,7 +149,7 @@ public class PendulumController {
 
     //called each time the position of the ball is changed
     void barEnergyGraph() {
-        double maxEnergy = totalEnergy();
+        double maxEnergy = getTotalEnergy();
         double heightKE = (newKineticEnergy() / maxEnergy) * RECTANGLE_HEIGHT;
         double heightPE = RECTANGLE_HEIGHT - heightKE;
         double newYKE = MIN_RECTANGLE_Y + (RECTANGLE_HEIGHT - heightKE);
@@ -165,7 +180,7 @@ public class PendulumController {
             optionsAnchorPane.getChildren().add(totalEnergyLine);
         }
 
-        final double totalEnergy = totalEnergy();
+        final double totalEnergy = getTotalEnergy();
         double ke = newKineticEnergy();
         double pe = newPotentialEnergy();
         double theta = newTheta();
@@ -182,6 +197,7 @@ public class PendulumController {
 
         keCurve.getPoints().addAll(x, keY);
         peCurve.getPoints().addAll(x, peY);
+
 
     }
 
@@ -203,7 +219,8 @@ public class PendulumController {
         bobCircle.setCenterY(bobDeltaY + axleCircle.getCenterY());
 
         lblAngleMax.setText(String.format("%.1f°", Math.abs(Math.toDegrees(thetaMax))));
-
+        keCurve.getPoints().clear();
+        peCurve.getPoints().clear();
         placeMarkers();
 
     }
@@ -318,14 +335,41 @@ public class PendulumController {
         });
 
         cmbGraph.getItems().addAll("Energy Bar", "Energy Curve");
+        cmbGraph.getSelectionModel().selectFirst();
+        cmbGraph.getSelectionModel().selectedIndexProperty().addListener(observable -> {
+            int index = cmbGraph.getSelectionModel().getSelectedIndex();
+            if (index == 0) {
+                for (Shape shape : new Shape[]{totalEnergyLine, keCurve, peCurve}) {
+                    shape.setVisible(false);
+                }
 
-        keCurve.setStroke(Color.GREEN);
-        peCurve.setStroke(Color.BLUE);
+                for (Rectangle rectangle : new Rectangle[]{recKE, recPE, recTE1, recTE2}) {
+                    rectangle.setVisible(true);
+                }
+            } else {
+                //used to clear the curves before starting
+                keCurve.getPoints().clear();
+                peCurve.getPoints().clear();
+                for (Shape shape : new Shape[]{totalEnergyLine, keCurve, peCurve}) {
+                    shape.setVisible(true);
+                }
+
+                for (Rectangle rectangle : new Rectangle[]{recKE, recPE, recTE1, recTE2}) {
+                    rectangle.setVisible(false);
+                }
+            }
+        });
+
+        keCurve.setStroke(Color.DODGERBLUE);
+        peCurve.setStyle("-fx-stroke: #21ff25");
         optionsAnchorPane.getChildren().addAll(keCurve, peCurve);
         for (Shape shape : new Shape[]{keCurve,peCurve,totalEnergyLine}) {
             shape.setStrokeWidth(2.0);
         }
 
+        for (Label label : new Label[]{lblKe, lblPe, lblTe}) {
+            label.setText("0 J");
+        }
 
     }
 
@@ -344,22 +388,27 @@ public class PendulumController {
         keCurve.getPoints().clear();
         peCurve.getPoints().clear();
         optionsAnchorPane.getChildren().remove(totalEnergyLine);
+
+        for (Label label : new Label[]{lblKe, lblPe, lblTe}) {
+            label.setText("0 J");
+        }
     }
 
     private double newTheta() {
         double omega = Math.sqrt(GRAVITY / lengthOfRope);
         return thetaMax * Math.cos(omega * bobTime);
     }
+
     private double newKineticEnergy() {
 
-        return totalEnergy() - newPotentialEnergy();
+        return getTotalEnergy() - newPotentialEnergy();
     }
 
     private double newPotentialEnergy() {
         return mass * GRAVITY * lengthOfRope * (1 - Math.cos(newTheta()));
     }
 
-    private double totalEnergy() {
+    private double getTotalEnergy() {
         return mass * GRAVITY * lengthOfRope * (1 - Math.cos(thetaMax));
     }
 

@@ -67,44 +67,59 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="143.0" text="Mass: ">
+            <Label layoutX="23.0" layoutY="115.0" text="Mass: ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Slider fx:id="massSlider" layoutX="13.0" layoutY="170.0" majorTickUnit="50.0" max="300.0" min="50.0" minorTickCount="0" prefHeight="14.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" value="100.0" />
-            <Label fx:id="lblMass" layoutX="69.0" layoutY="143.0" text="100g">
+            <Slider fx:id="massSlider" layoutX="13.0" layoutY="142.0" majorTickUnit="50.0" max="300.0" min="50.0" minorTickCount="0" prefHeight="14.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" value="100.0" />
+            <Label fx:id="lblMass" layoutX="69.0" layoutY="115.0" text="100g">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Rectangle fx:id="recKE" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="46.0" y="395.0" />
-            <Line fx:id="horizontalAxisLine" endX="225.0" endY="646.0" startX="25.0" startY="646.0" />
-            <Rectangle fx:id="recPE" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="110.0" y="395.0" />
-            <Line fx:id="verticalAxisLine" endX="24.5" endY="369.0" startX="24.5" startY="645.5" />
-            <Rectangle fx:id="recTE1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="527.0" />
-            <Line endX="-109.0" endY="21.0" layoutX="144.0" layoutY="355.0" startX="-119.0" startY="10.5" />
-            <Line endX="-103.0" endY="-11.5" layoutX="127.0" layoutY="377.0" startX="-112.0" />
-            <Label layoutX="51.0" layoutY="658.0" rotate="-90.0" text="K.E">
+            <Rectangle fx:id="recKE" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="46.0" y="309.0" />
+            <Line fx:id="horizontalAxisLine" endX="225.0" endY="560.0" startX="25.0" startY="560.0" />
+            <Rectangle fx:id="recPE" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cc" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="110.0" y="309.0" />
+            <Line fx:id="verticalAxisLine" endX="24.5" endY="283.0" startX="24.5" startY="559.5" />
+            <Rectangle fx:id="recTE1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="441.0" />
+            <Line endX="-109.0" endY="21.0" layoutX="144.0" layoutY="269.0" startX="-119.0" startY="10.5" />
+            <Line endX="-103.0" endY="-11.5" layoutX="127.0" layoutY="291.0" startX="-112.0" />
+            <Label layoutX="32.0" layoutY="585.0" text="K.E :" textFill="DODGERBLUE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="115.0" layoutY="658.0" rotate="-90.0" text="P.E">
+            <Label layoutX="32.0" layoutY="619.0" text="P.E :" textFill="#21ff25">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="180.0" layoutY="658.0" rotate="-90.0" text="T.E">
+            <Label layoutX="33.0" layoutY="646.0" text="T.E :" textFill="RED">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Rectangle fx:id="recTE2" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="132.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="395.0" />
-            <ComboBox fx:id="cmbGraph" layoutX="20.0" layoutY="260.0" onAction="#changeGraph" prefHeight="25.0" prefWidth="165.0" />
-            <Label layoutX="19.0" layoutY="235.0" text="Graph">
+            <Rectangle fx:id="recTE2" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="132.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="309.0" />
+            <ComboBox fx:id="cmbGraph" layoutX="20.0" layoutY="209.0" onAction="#changeGraph" prefHeight="25.0" prefWidth="165.0" />
+            <Label layoutX="19.0" layoutY="184.0" text="Graph">
                <font>
                   <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblKe" layoutX="73.0" layoutY="585.0" text="Value" textFill="DODGERBLUE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPe" layoutX="74.0" layoutY="619.0" text="Value" textFill="#21ff25">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTe" layoutX="75.0" layoutY="646.0" text="Value" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
