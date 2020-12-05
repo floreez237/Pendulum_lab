@@ -13,10 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polyline;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.util.Duration;
 
 
@@ -163,19 +160,28 @@ public class PendulumController {
             totalEnergyLine.setStartY(startTotalEnergy.getY());
             totalEnergyLine.setEndX(endTotalEnergy.getX());
             totalEnergyLine.setEndY(endTotalEnergy.getY());
-//            totalEnergyLine.setFill(Color.RED);
+            totalEnergyLine.setFill(Color.RED);
             totalEnergyLine.setStroke(Color.RED);
             optionsAnchorPane.getChildren().add(totalEnergyLine);
         }
 
-        double pe = newPotentialEnergy();
-
+        final double totalEnergy = totalEnergy();
         double ke = newKineticEnergy();
+        double pe = newPotentialEnergy();
+        double theta = newTheta();
         if (Math.abs(ke) < 1e-14) {
             keCurve.getPoints().clear();
-        } else {
-
         }
+        if (Math.abs(totalEnergy - pe) < 1e-14) {
+            peCurve.getPoints().clear();
+        }
+
+        double x = (((theta + thetaMax) / (2 * thetaMax)) * MAX_WIDTH) + horizontalAxisLine.getStartX(); //this is a formula I derived for the x-coordinate
+        double keY = verticalAxisLine.getStartY() - (ke / totalEnergy) * MAX_HEIGHT;
+        double peY = verticalAxisLine.getStartY() - (pe / totalEnergy) * MAX_HEIGHT;
+
+        keCurve.getPoints().addAll(x, keY);
+        peCurve.getPoints().addAll(x, peY);
 
     }
 
@@ -195,7 +201,6 @@ public class PendulumController {
         double bobDeltaX = lengthOfRopeInPixels * Math.sin(thetaMax);
         bobCircle.setCenterX(bobDeltaX + axleCircle.getCenterX());
         bobCircle.setCenterY(bobDeltaY + axleCircle.getCenterY());
-
 
         lblAngleMax.setText(String.format("%.1f°", Math.abs(Math.toDegrees(thetaMax))));
 
@@ -313,6 +318,14 @@ public class PendulumController {
 
         cmbGraph.getItems().addAll("Energy Bar", "Energy Curve");
 
+        keCurve.setStroke(Color.GREEN);
+        peCurve.setStroke(Color.BLUE);
+        optionsAnchorPane.getChildren().addAll(keCurve, peCurve);
+        for (Shape shape : new Shape[]{keCurve,peCurve,totalEnergyLine}) {
+            shape.setStrokeWidth(2.0);
+        }
+
+
     }
 
 
@@ -326,13 +339,16 @@ public class PendulumController {
         for (Rectangle rectangle : rectangles) {
             rectangle.setHeight(0);
         }
+
+        keCurve.getPoints().clear();
+        peCurve.getPoints().clear();
+        optionsAnchorPane.getChildren().remove(totalEnergyLine);
     }
 
     private double newTheta() {
         double omega = Math.sqrt(GRAVITY / lengthOfRope);
         return thetaMax * Math.cos(omega * bobTime);
     }
-
     private double newKineticEnergy() {
 
         return totalEnergy() - newPotentialEnergy();
