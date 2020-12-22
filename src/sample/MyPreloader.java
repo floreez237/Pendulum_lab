@@ -47,7 +47,7 @@ public class MyPreloader extends Preloader {
 
     @Override
     public void init() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/preloader.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/preloader.fxml"));
         scene=new Scene(root);
     }
 }

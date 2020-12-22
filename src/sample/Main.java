@@ -13,7 +13,7 @@ public class Main extends Application {
         private static final int COUNT_LIMIT=10;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/sample.fxml"));
         primaryStage.setTitle("PKFokam Virtual Lab");
         primaryStage.setScene(new Scene(root));
         primaryStage.setMaximized(true);
