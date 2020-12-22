@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
@@ -16,43 +18,49 @@
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PendulumController">
    <children>
       <Circle fx:id="axleCircle" centerX="450.0" centerY="30.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-      <Group layoutX="707.0" layoutY="549.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="157.0" />
-            <TextField fx:id="tfTimer" alignment="CENTER" editable="false" layoutX="20.0" layoutY="22.0" prefHeight="30.0" prefWidth="110.0" text="0.000">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <JFXButton fx:id="btnStartStop" buttonType="RAISED" layoutX="87.0" layoutY="72.0" onMouseClicked="#handleStartStopStopWatch" style="-fx-background-color: white;" text="Start">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton fx:id="btnRestart" buttonType="RAISED" layoutX="20.0" layoutY="72.0" onMouseClicked="#handleRestartStopWatch" style="-fx-background-color: white;" text="Restart">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-         </children>
-      </Group>
       <Line fx:id="ropeLine" endX="200.0" endY="300.0" startX="10.0" startY="20.0" />
-      <Circle fx:id="bobCircle" centerX="450.0" centerY="460.0" fill="DODGERBLUE" onMouseDragged="#changeBallPosition" onMouseReleased="#handleBallRelease" radius="17.0" stroke="BLACK" strokeType="INSIDE" />
-      <JFXButton contentDisplay="CENTER" layoutX="418.0" layoutY="608.0" onMouseClicked="#reInitialize" prefHeight="30.0" prefWidth="41.0" text="Restart">
-         <graphic>
-            <Circle fill="DODGERBLUE" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-         </graphic>
+      <Circle fx:id="bobCircle" centerX="450.0" centerY="460.0" onMouseDragged="#changeBallPosition" onMouseReleased="#handleBallRelease" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="DODGERBLUE" />
+                  <Stop color="#85c4ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Circle>
+      <JFXButton buttonType="RAISED" contentDisplay="CENTER" layoutX="418.0" layoutY="608.0" onMouseClicked="#reInitialize" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: DODJERBLUE; -fx-border-radius: 5 5 5 5;" text="Restart">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
+         <graphic>
+            <Circle radius="31.0" stroke="BLACK" strokeType="INSIDE">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+         </graphic>
       </JFXButton>
-      <Label fx:id="lblAngleMax" contentDisplay="CENTER" layoutX="469.0" layoutY="55.0" text="0.0°" textFill="#2931ab">
+      <Label fx:id="lblAngleMax" contentDisplay="CENTER" layoutX="469.0" layoutY="55.0" text="0.0°">
          <font>
             <Font size="22.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="DODGERBLUE" />
+                  <Stop color="DODGERBLUE" offset="0.007246376811594203" />
+                  <Stop color="#85c4ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
       <AnchorPane fx:id="optionsAnchorPane" layoutX="890.0" prefHeight="700.0" prefWidth="252.0" style="-fx-background-color: lightgrey;">
          <children>
@@ -78,19 +86,44 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Rectangle fx:id="recKE" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="46.0" y="309.0" />
+            <Rectangle fx:id="recKE" arcHeight="5.0" arcWidth="5.0" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="46.0" y="309.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
             <Line fx:id="horizontalAxisLine" endX="225.0" endY="560.0" startX="25.0" startY="560.0" />
-            <Rectangle fx:id="recPE" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cc" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="110.0" y="309.0" />
+            <Rectangle fx:id="recPE" arcHeight="5.0" arcWidth="5.0" fill="#3dee3dcc" height="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="110.0" y="309.0" />
             <Line fx:id="verticalAxisLine" endX="24.5" endY="283.0" startX="24.5" startY="559.5" />
-            <Rectangle fx:id="recTE1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="441.0" />
+            <Rectangle fx:id="recTE1" arcHeight="5.0" arcWidth="5.0" height="118.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="441.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
             <Line endX="-109.0" endY="21.0" layoutX="144.0" layoutY="269.0" startX="-119.0" startY="10.5" />
             <Line endX="-103.0" endY="-11.5" layoutX="127.0" layoutY="291.0" startX="-112.0" />
-            <Label layoutX="32.0" layoutY="585.0" text="K.E :" textFill="DODGERBLUE">
+            <Label layoutX="32.0" layoutY="585.0" text="K.E :">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="DODGERBLUE" offset="0.007246376811594203" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
-            <Label layoutX="32.0" layoutY="619.0" text="P.E :" textFill="#21ff25">
+            <Label layoutX="32.0" layoutY="619.0" text="P.E :" textFill="#3dee3d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -100,19 +133,28 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Rectangle fx:id="recTE2" arcHeight="5.0" arcWidth="5.0" fill="#21ff25cb" height="132.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="309.0" />
+            <Rectangle fx:id="recTE2" arcHeight="5.0" arcWidth="5.0" fill="#3dee3dcc" height="132.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" width="40.0" x="175.0" y="309.0" />
             <ComboBox fx:id="cmbGraph" layoutX="20.0" layoutY="209.0" onAction="#changeGraph" prefHeight="25.0" prefWidth="165.0" />
             <Label layoutX="19.0" layoutY="184.0" text="Graph">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblKe" layoutX="73.0" layoutY="585.0" text="Value" textFill="DODGERBLUE">
+            <Label fx:id="lblKe" layoutX="73.0" layoutY="585.0" text="Value">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="DODGERBLUE" offset="0.007246376811594203" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
-            <Label fx:id="lblPe" layoutX="74.0" layoutY="619.0" text="Value" textFill="#21ff25">
+            <Label fx:id="lblPe" layoutX="74.0" layoutY="619.0" text="Value" textFill="#3dee3d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -124,5 +166,33 @@
             </Label>
          </children>
       </AnchorPane>
+      <Group layoutX="87.0" layoutY="450.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="118.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="157.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="DODGERBLUE" />
+                        <Stop color="#85c4ff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
+            <TextField fx:id="tfTimer" alignment="CENTER" editable="false" layoutX="20.0" layoutY="22.0" prefHeight="30.0" prefWidth="110.0" text="0.000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="btnStartStop" buttonType="RAISED" layoutX="90.0" layoutY="72.0" onMouseClicked="#handleStartStopStopWatch" style="-fx-background-color: white;" text="Start">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnRestart" buttonType="RAISED" layoutX="7.0" layoutY="72.0" onMouseClicked="#handleRestartStopWatch" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: white;" text="Restart">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Group>
    </children>
 </AnchorPane>

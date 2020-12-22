@@ -361,7 +361,7 @@ public class PendulumController {
         });
 
         keCurve.setStroke(Color.DODGERBLUE);
-        peCurve.setStyle("-fx-stroke: #21ff25");
+        peCurve.setStyle("-fx-stroke: #3dee3d");
         optionsAnchorPane.getChildren().addAll(keCurve, peCurve);
         for (Shape shape : new Shape[]{keCurve,peCurve,totalEnergyLine}) {
             shape.setStrokeWidth(2.0);
