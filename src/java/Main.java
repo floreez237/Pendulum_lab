@@ -1,8 +1,7 @@
-package sample;
+package java;
 
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
-import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

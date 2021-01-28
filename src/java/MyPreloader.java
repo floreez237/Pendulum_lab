@@ -1,4 +1,4 @@
-package sample;
+package java;
 
 import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import sample.Controllers.PreloaderController;
+import java.Controllers.PreloaderController;
 
 public class MyPreloader extends Preloader {
 
@@ -30,10 +30,8 @@ public class MyPreloader extends Preloader {
     @Override
     public void handleStateChangeNotification(StateChangeNotification info) {
         StateChangeNotification.Type type=info.getType();
-        switch (type){
-            case BEFORE_START:
-                stage.hide();
-                break;
+        if (type == StateChangeNotification.Type.BEFORE_START) {
+            stage.hide();
         }
     }
 
